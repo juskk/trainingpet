@@ -1,0 +1,9 @@
+.Link {
+  text-decoration: none;
+  cursor: pointer;
+  color: rgb(37, 37, 37);
+  padding: 6px;
+  border: 2px solid black;
+  border-radius: 2px;
+  margin: 2px 0;
+}
