@@ -1,4 +1,5 @@
 const courseRouter = require('./api/course.route')
+const userRouter = require('./api/user.route')
 
 class AppRouter {
   constructor(app) {
@@ -7,6 +8,7 @@ class AppRouter {
   init() {
     this.app.get('/', (_req, res) => res.send('API running'));
     this.app.use('/courses', courseRouter)
+    this.app.use('/auth', userRouter)
   }
 }
 
