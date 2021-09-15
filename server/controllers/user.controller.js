@@ -16,7 +16,7 @@ class UserController {
       const matched = utils.validPassword(req.body.password, user.hash, user.salt)
       if (!matched) return resultHandler.BadRequest(res, 'wrong password')
       const jwt = utils.genJWT(user);
-      resultHandler.Success(res, { token: jwt.token, expiresIn: jwt.expires })
+      resultHandler.Success(res, { token: jwt.token, expiresIn: jwt.expires, id: user._id })
     } catch(e) {
       resultHandler.BadRequest(res)
     }
@@ -41,8 +41,7 @@ class UserController {
         newUser.save()
           .then(user => {
             const jwt = utils.genJWT(user)
-            console.log(jwt)
-            resultHandler.Success(res, { token: jwt.token, expiresIn: jwt.expires })
+            resultHandler.Success(res, { token: jwt.token, expiresIn: jwt.expires, id: user._id })
           })
           .catch(e => {
             resultHandler.BadRequest(res)

@@ -6,6 +6,7 @@ const courseSchema = new Schema({
   description: String,
   isPublic: Boolean,
   author: String,
+  userId: String,
 }, {timestamps: true})
 
 const Course = mongoose.model('Course', courseSchema)

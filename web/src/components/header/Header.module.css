@@ -1,8 +1,14 @@
-.Container {
+.Header {
   background-color: black;
+}
+
+.Container {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  max-width: 1300px;
+  width: 100%;
+  margin: auto;
 }
 
 .Navigation {

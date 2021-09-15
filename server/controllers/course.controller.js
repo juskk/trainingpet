@@ -12,6 +12,14 @@ class CourseController {
       resultHandler.BadRequest(res)
     }
   }
+  async getUserCourses(req, res) {
+    try {
+      const courses = await Course.find({userId: req.params.userId})
+      resultHandler.Success(res, courses)
+    } catch(e) {
+      resultHandler.BadRequest(res)
+    }
+  }
   async getCourse(req, res) {
     try {
       const course = await Course.findById(req.params.id)
@@ -22,6 +30,7 @@ class CourseController {
   }
   async createCourse(req, res) {
     try {
+      console.log(req.body)
       const newCourse = new Course({...req.body})
       const course = await newCourse.save()
       resultHandler.Created(res, course)

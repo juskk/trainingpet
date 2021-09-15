@@ -11,7 +11,6 @@ const FullCourse = () => {
 
   const [name, setName] = React.useState(course.name | '');
   const [description, setDescription] = React.useState(course.description | '');
-  const [author, setAuthor] = React.useState(course.author | '');
   const [isPublic, setPublicity] = React.useState(course.isPublic | false)
 
 
@@ -25,7 +24,6 @@ const FullCourse = () => {
       setCourse(res)
       setName(res.name)
       setDescription(res.description)
-      setAuthor(res.author)
       setPublicity(res.isPublic)
     })
       
@@ -38,7 +36,7 @@ const FullCourse = () => {
 
   const toUpdateCourse = () => {
     console.log('started')
-    dispatch(updateCourse({name, description, author, isPublic}, course._id))
+    dispatch(updateCourse({name, description, author: course.author, isPublic}, course._id))
     .then(res => {
       console.log(res)
       const info = res.data.data;
@@ -68,12 +66,6 @@ const FullCourse = () => {
             onChange={ event => setDescription(event.target.value) }
             />
           <input 
-            style={{width: 140}} 
-            type="text" 
-            value={author}
-            onChange={ event => setAuthor(event.target.value) }
-          />
-          <input 
             type="checkbox"
             checked={isPublic}
             onChange={ () => setPublicity(prev => !prev) }
@@ -101,13 +93,13 @@ const FullCourse = () => {
           className={classes.Delete} 
           onClick={removeCourse}
         >
-          REMOVE
+          <p>REMOVE</p>
         </div>
         <div
           className={classes.Change}
           onClick={ () => setChangeMode(prev => !prev) }
         >
-          CHANGE
+          {changeMode ? <p>BACK</p> : <p>CHANGE</p>}
         </div>
       </div>
     </div>

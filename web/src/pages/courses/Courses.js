@@ -1,25 +1,21 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import ManipulateCourse from '../../components/course/addCourse/ManipulateCourse';
-import CoursePreview from '../../components/course/coursePreview/CoursePreview';
+import ReadingCoursePreview from '../../components/course/readingCoursePreview/ReadingCoursePreview';
 import classes from './Courses.module.css'
 
 const Courses = () => {
-  const [creating, setCreating] = React.useState(false)
   const store = useSelector(store => store.courses)
 
   if (store.loading) return <p className={classes.Container}>loading</p>
   if (store.courses) return (
     <div className={classes.Container}>
-      <p 
-      className={classes.Create}
-      onClick={ () => setCreating(prev => !prev) }>create course</p>
-      { creating ? <ManipulateCourse /> : null }
       {store.courses.map(course => (
-        <CoursePreview
-          name={course.name}
+        <ReadingCoursePreview 
           author={course.author}
-          id={course._id}
+          name={course.name}
+          courseId={course._id}
+          description={course.description}
+          key={course._id}
         />
       ))}
     </div>

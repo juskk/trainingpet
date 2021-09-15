@@ -1,0 +1,16 @@
+.Container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: calc(100vh - 54px);
+}
+
+.Login {
+  color: orange;
+  cursor: pointer;
+  font-weight: 600;
+}
+.Login:hover {
+  opacity: .7;
+  transition: .2s;
+}

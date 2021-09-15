@@ -1,0 +1,17 @@
+.Container {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.Part {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.ErrorText {
+  color: red;
+  font-weight: bold;
+  height: 16px;
+}
