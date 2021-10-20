@@ -1,2 +1,2 @@
 # trainingpet
-Dirty code, just a common app for practise
+Dirty code to save some time, just a common app for practice
